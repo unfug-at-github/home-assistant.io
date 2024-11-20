@@ -31,7 +31,7 @@ The statistics integration is different to [Long-term Statistics](https://develo
 The `statistics` sensor has an internal buffer that stores the values it needs for the computation of the various functions (for example, `average_step`). The sensor is updated whenever new values are added to the buffer or when elements are removed. This is triggered either by a change of the source sensor (which may or may not change its actual value) or by values expiring (in cases where `max_age` was specified). This means that the buffer can hold a sequence of identical values in cases where values are not changing over time.
 
 When using a time-based buffer (by providing a max-age), it is recommended that the buffer contains at least a decent number of values spanning the full range of time. For sensors that don't change much, this can be achieved by using a template sensor with a time-based trigger as input. If the input values don't cover most of the time range, the computed output values could lead to unexpected results.
-Example: To find out whether a switch was used in the last 5 minutes, `count_on` could be used. However, if there are no frequent readings a single "Off" (maybe only a second ago) in the buffer would produce 0 even though the sensor was "On" for most of the last five minutes.
+Example: To find out whether a switch was used in the last 5 minutes, "Count on" could be used. However, if there are no frequent readings a single "Off" (maybe only a second ago) in the buffer would produce 0 even though the sensor was "On" for most of the last five minutes.
 
 {% include integrations/config_flow.md %}
 
